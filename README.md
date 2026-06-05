@@ -6,4 +6,4 @@
 # Collaborators
 
 - Ján Kovačovský 
-- Viliam Virba
+- Viliam Virba aj username
