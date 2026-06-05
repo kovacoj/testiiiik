@@ -7,3 +7,4 @@
 
 - Ján Kovačovský 
 - Viliam Virba
+- Veru Junkova
