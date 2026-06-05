@@ -6,3 +6,4 @@
 # Collaborators
 
 - Ján Kovačovský 
+- Viliam Virba
