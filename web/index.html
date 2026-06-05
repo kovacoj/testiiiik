@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Collaborators</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: Inter, system-ui, sans-serif;
+        line-height: 1.5;
+      }
+
+      body {
+        margin: 0;
+        background: #0f172a;
+        color: #e2e8f0;
+      }
+
+      main {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 48px 20px 64px;
+      }
+
+      .card {
+        background: rgba(15, 23, 42, 0.75);
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 20px 60px rgba(15, 23, 42, 0.35);
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: #f8fafc;
+      }
+
+      a {
+        color: #93c5fd;
+      }
+
+      code {
+        background: rgba(148, 163, 184, 0.18);
+        padding: 0.15em 0.35em;
+        border-radius: 6px;
+      }
+
+      .status {
+        margin-bottom: 16px;
+        color: #cbd5e1;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="status">This page renders the repository README. Add your name there and push to test GitHub access.</p>
+      <article id="content" class="card">Loading README...</article>
+    </main>
+
+    <script type="module">
+      import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+
+      const content = document.getElementById("content");
+
+      try {
+        const response = await fetch("./README.md", { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(`Failed to load README.md (${response.status})`);
+        }
+
+        const markdown = await response.text();
+        content.innerHTML = marked.parse(markdown);
+      } catch (error) {
+        content.innerHTML = `<p>Could not load README.md.</p><pre>${error.message}</pre>`;
+      }
+    </script>
+  </body>
+</html>
